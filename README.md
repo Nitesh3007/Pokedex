@@ -1,63 +1,70 @@
-Pokedex Search App
+#  Pokedex Search App
 
-A simple full-stack Pokedex application built for the assignment.
-Users can search any Pokemon by name and view detailed information from the PokeAPI, powered by a backend caching layer for fast responses.
+A simple full-stack Pokémon search application built as part of an assignment.
+Users can search for any Pokémon by name and view detailed information fetched from the **PokeAPI**, optimized through a **backend caching layer** for fast responses.
 
-🌟 Features
-✅ Backend (Node.js + Express)
+---
 
-REST API to fetch Pokémon details
+## 🌟 Features
 
-Uses LRU Cache for:
+###  Backend (Node.js + Express)
 
-Faster repeated responses
+* REST API to fetch Pokémon details
+* **LRU Cache** implementation for:
 
-Cache expiry
+  * Faster repeated responses
+  * Cache expiry
+  * Maximum cache entries
+* Error handling for:
 
-Max cache entries
+  * Invalid Pokémon names
+  * API failures
+  * Timeouts
+* CORS enabled for frontend usage
 
-Handles:
+###  Frontend (React + Vite)
 
-Invalid Pokémon names
+* Clean and responsive UI
+* Search Pokémon by name
+* Displays:
 
-API failures
+  * Image
+  * ID, height, weight
+  * Abilities
+* Loading states & error messages
 
-Timeouts
+---
 
-CORS-enabled for frontend usage
+## ⚡ Backend Setup
 
-✅ Frontend (React + Vite)
+### 1️⃣ Install Dependencies
 
-Clean UI to search Pokémon by name
-
-Displays:
-
-Pokemon image
-
-ID, height, weight
-
-Abilities list
-
-Loading and error handling
-
-Responsive design
-
-⚡ Backend Setup
-1️⃣ Install Dependencies
+```bash
 cd backend
 npm install
+```
 
-2️⃣ Start Backend Server
+### 2️⃣ Start Backend Server
+
+```bash
 npm start
+```
 
-3️⃣ API Endpoints
-🔍 Search Pokémon
-GET http://localhost:3001/api/pokemon/:name
+### 3️⃣ API Endpoints
 
-Example:
+#### 🔍 Search Pokémon
+
+`GET http://localhost:3001/api/pokemon/:name`
+
+##### Example:
+
+```bash
 curl http://localhost:3001/api/pokemon/pikachu
+```
 
-Sample Response:
+##### Sample Response:
+
+```json
 {
   "fromCache": false,
   "data": {
@@ -68,49 +75,65 @@ Sample Response:
     "sprites": { ... }
   }
 }
+```
 
-🎨 Frontend Setup
-1️⃣ Install Dependencies
+---
+
+## 🎨 Frontend Setup
+
+### 1️⃣ Install Dependencies
+
+```bash
 cd frontend
 npm install
+```
 
-2️⃣ Start Frontend
+### 2️⃣ Start Frontend
+
+```bash
 npm run dev
+```
 
-Frontend runs at:
+Frontend will run at:
 
-👉 http://localhost:5173
+👉 **[http://localhost:5173](http://localhost:5173)**
 
-🚀 How It Works
+---
 
-Frontend calls your backend:
+## 🚀 How It Works
 
-/api/pokemon/:name
+### 🔸 Frontend Flow
 
+1. User searches a Pokémon by name
+2. Frontend sends a request to:
 
-Backend checks LRU cache:
+   ```
+   /api/pokemon/:name
+   ```
 
-If cached → returns instantly
+### 🔸 Backend Flow
 
-If not → fetches from https://pokeapi.co
- and stores in cache
+1. Check if Pokémon data exists in **LRU Cache**
 
+   * If **cached →** return instantly
+2. If **not cached →** fetch from
+   `https://pokeapi.co`
+3. Store result in cache
+4. Return response to frontend
 
-📦 Technologies Used
-Backend
+---
 
-Node.js
+## 📦 Technologies Used
 
-Express.js
+### **Backend**
 
-Axios
+* Node.js
+* Express.js
+* Axios
+* LRU Cache
 
-LRU Cache
+### **Frontend**
 
-Frontend
-
-React
-
-Vite
-
-Fetch API
+* React
+* Vite
+* Fetch API
