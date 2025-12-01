@@ -1,6 +1,6 @@
 #  Pokedex Search App
 
-A simple full-stack Pokémon search application built as part of an assignment.
+A simple full-stack Pokemon search application built as part of an assignment.
 Users can search for any Pokémon by name and view detailed information fetched from the **PokeAPI**, optimized through a **backend caching layer** for fast responses.
 
 ---
@@ -9,7 +9,7 @@ Users can search for any Pokémon by name and view detailed information fetched 
 
 ###  Backend (Node.js + Express)
 
-* REST API to fetch Pokémon details
+* REST API to fetch Pokemon details
 * **LRU Cache** implementation for:
 
   * Faster repeated responses
